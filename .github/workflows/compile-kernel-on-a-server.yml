@@ -70,7 +70,7 @@ on:
         type: choice
         options:
           - -ophub
-          - -yourname
+          - -mustofa
 
 env:
   TZ: Etc/UTC
@@ -137,8 +137,8 @@ jobs:
         run: |
           df -hT ${PWD}
           mkdir -p /builder/{kernel,output,ccache}
-          ln -sf /builder/kernel /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/kernel
-          ln -sf /builder/output /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/output
+          ln -sf /builder/kernel /home/runner/work/_actions/tofamus3040/amlogic-s9xxx-armbian/main/compile-kernel/kernel
+          ln -sf /builder/output /home/runner/work/_actions/tofamus3040/amlogic-s9xxx-armbian/main/compile-kernel/output
           sudo rm -rf /root/.ccache
           sudo ln -sf /builder/ccache /root/.ccache
           echo "status=success" >> ${GITHUB_OUTPUT}
@@ -168,7 +168,7 @@ jobs:
             kernel-${{ inputs.kernel_toolchain }}-${{ inputs.kernel_version }}-
 
       - name: Compile the kernel [ ${{ inputs.kernel_version }} ]
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: tofamus3040/amlogic-s9xxx-armbian@main
         if: ${{ steps.mapped.outputs.status }} == 'success' && !cancelled()
         with:
           build_target: kernel
