@@ -83,7 +83,7 @@ on:
         type: choice
         options:
           - -ophub
-          - -yourname
+          - -mustofa
 
 env:
   TZ: Etc/UTC
